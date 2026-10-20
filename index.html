@@ -228,6 +228,13 @@
       .artwork { min-height: 260px; }
       .contact { align-items: flex-start; flex-direction: column; padding: 22px; }
     }
+
+    .product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
   </style>
 </head>
 <body>
@@ -266,8 +273,11 @@
       </div>
       <div class="cards">
         <article class="card">
-          <div class="artwork ai"><span class="label">01 / Digital art</span><span class="emoji" aria-hidden="true">🍓</span><span class="number">SWEET STUDY No. 01</span></div>
-          <h3>Sweet Little Worlds</h3><p>Playful digital illustrations inspired by fruit, flowers, and daydreams.</p>
+         <div class="artwork ai">
+  <span class="label">01 / Digital art</span>
+  <img src="cherry_t.png" alt="Cherry T-shirt design" class="product-image">
+  <span class="number">SWEET STUDY No. 01</span>
+</div>
         </article>
         <article class="card">
           <div class="artwork poster"><span class="label">02 / Art print</span><span class="emoji" aria-hidden="true">🍋</span><span class="number">SUNSHINE SERIES</span></div>
