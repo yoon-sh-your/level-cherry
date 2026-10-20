@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Level Cherry is an independent art and objects studio creating playful illustrations, art prints, and mug designs.">
+  <title>Level Cherry — Art & Objects</title>
+  <style>
+    :root {
+      --cream: #fff8ed;
+      --paper: #fffdf8;
+      --ink: #25251f;
+      --red: #d94350;
+      --pink: #f4b8b7;
+      --yellow: #f6d768;
+      --blue: #a8d9e8;
+      --green: #8ebc87;
+      --line: #25251f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+    }
+    a { color: inherit; }
+    .announcement {
+      padding: 10px 16px;
+      background: var(--red);
+      color: white;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      max-width: 1180px;
+      margin: auto;
+      padding: 22px 28px;
+    }
+    .wordmark {
+      text-decoration: none;
+      font-size: clamp(23px, 4vw, 34px);
+      font-weight: 1000;
+      letter-spacing: -.08em;
+      line-height: 1;
+    }
+    .wordmark span { color: var(--red); }
+    nav { display: flex; gap: 24px; font-size: 13px; font-weight: 800; }
+    nav a { text-decoration: none; }
+    nav a:hover { color: var(--red); }
+    .hero {
+      max-width: 1180px;
+      margin: 10px auto 0;
+      padding: 30px 28px 70px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-weight: 900;
+    }
+    h1 {
+      font-size: clamp(56px, 9vw, 112px);
+      letter-spacing: -.095em;
+      line-height: .86;
+      margin: 22px 0;
+      font-weight: 1000;
+    }
+    h1 .cherry { color: var(--red); }
+    .hero-copy {
+      max-width: 450px;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .pill {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 13px 18px;
+      background: var(--ink);
+      color: white;
+      text-decoration: none;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      transition: transform .2s, background .2s;
+    }
+    .pill:hover { transform: rotate(-2deg) translateY(-2px); background: var(--red); }
+    .hero-art {
+      min-height: 420px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      border-radius: 48% 48% 42% 42% / 40% 40% 35% 35%;
+      background: var(--yellow);
+      transform: rotate(2deg);
+    }
+    .hero-art .sun {
+      position: absolute; width: 220px; height: 220px; border-radius: 50%;
+      background: var(--pink); top: 55px; right: 30px;
+    }
+    .hero-art .fruit {
+      position: relative;
+      font-size: clamp(140px, 20vw, 245px);
+      filter: drop-shadow(8px 10px 0 rgba(37,37,31,.12));
+      transform: rotate(-12deg);
+      z-index: 1;
+    }
+    .scribble {
+      position: absolute; z-index: 2; font-weight: 1000; font-size: 14px;
+      background: var(--paper); border: 2px solid var(--ink); padding: 10px 13px;
+      border-radius: 50%; transform: rotate(-9deg); left: 24px; bottom: 52px;
+    }
+    .spark { position: absolute; font-size: 35px; }
+    .spark.one { top: 35px; left: 35px; }
+    .spark.two { bottom: 36px; right: 35px; }
+    .section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 55px 28px 75px;
+    }
+    .section-heading {
+      display: flex; justify-content: space-between; align-items: end; gap: 20px;
+      border-bottom: 2px solid var(--ink); padding-bottom: 17px; margin-bottom: 26px;
+    }
+    h2 { font-size: clamp(34px, 5vw, 54px); letter-spacing: -.07em; margin: 0; }
+    .section-heading p { margin: 0; max-width: 300px; font-size: 13px; line-height: 1.5; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 20px; }
+    .card { min-width: 0; }
+    .artwork {
+      min-height: 290px; border: 2px solid var(--ink); border-radius: 8px;
+      display: grid; place-items: center; position: relative; overflow: hidden;
+    }
+    .artwork .emoji { font-size: 100px; filter: drop-shadow(5px 6px 0 rgba(37,37,31,.1)); }
+    .artwork .label {
+      position: absolute; top: 14px; left: 14px; padding: 7px 10px;
+      border: 1.5px solid var(--ink); background: var(--paper); border-radius: 999px;
+      font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em;
+    }
+    .artwork .number {
+      position: absolute; bottom: 13px; right: 15px; font-size: 12px; font-weight: 900;
+    }
+    .artwork.ai { background: var(--pink); }
+    .artwork.poster { background: var(--blue); }
+    .artwork.mug { background: var(--green); }
+    .artwork.sunny { background: #f6d768; }
+    .artwork.flower { background: #d9c7ed; }
+    .artwork.home { background: #f4c9a8; }
+    .artwork.paper { background: #d5e6c8; }
+    .artwork.bloom { background: #f2aebc; }
+    .artwork.dream { background: #b9d9e9; }
+    .artwork.sunny::before, .artwork.flower::before, .artwork.home::before,
+    .artwork.paper::before, .artwork.bloom::before, .artwork.dream::before {
+      content: ""; position: absolute; width: 190px; height: 190px;
+      border: 2px solid var(--ink); border-radius: 50%; opacity: .28;
+    }
+    .artwork.flower::before { border-radius: 45% 55% 60% 40%; transform: rotate(25deg); }
+    .artwork.home::before { width: 220px; height: 150px; border-radius: 50%; transform: rotate(-18deg); }
+    .artwork.paper::before { width: 165px; height: 215px; border-radius: 8px; transform: rotate(8deg); }
+    .artwork.bloom::before { border-radius: 40% 60% 50% 50%; transform: rotate(-22deg); }
+    .artwork.dream::before { width: 210px; height: 160px; border-radius: 50%; transform: rotate(20deg); }
+    .artwork.ai::before, .artwork.poster::before, .artwork.mug::before {
+      content: ""; position: absolute; width: 180px; height: 180px; border: 2px solid var(--ink);
+      border-radius: 50%; opacity: .28;
+    }
+    .artwork.poster::before { width: 220px; height: 220px; border-radius: 40% 60% 58% 42%; transform: rotate(30deg); }
+    .artwork.mug::before { width: 205px; height: 150px; border-radius: 50%; transform: rotate(-20deg); }
+    .card h3 { font-size: 20px; letter-spacing: -.04em; margin: 15px 0 7px; }
+    .card p { margin: 0; font-size: 13px; line-height: 1.55; max-width: 330px; }
+    .mood-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .mood-card { border: 2px solid var(--ink); border-radius: 10px; padding: 24px; min-height: 220px; }
+    .mood-color { background: var(--pink); }
+    .mood-ritual { background: var(--blue); }
+    .mood-play { background: var(--yellow); }
+    .mood-symbol { display: block; font-size: 42px; margin-bottom: 25px; }
+    .mood-card h3 { font-size: 21px; letter-spacing: -.04em; margin: 0 0 8px; }
+    .mood-card p { font-size: 13px; line-height: 1.6; margin: 0; max-width: 280px; }
+    .about {
+      background: var(--yellow);
+      border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+    }
+    .about-inner {
+      max-width: 1180px; margin: auto; padding: 58px 28px;
+      display: grid; grid-template-columns: .8fr 1.2fr; gap: 35px; align-items: center;
+    }
+    .about-mark { font-size: clamp(70px, 12vw, 130px); text-align: center; }
+    .about h2 { max-width: 600px; }
+    .about p { max-width: 620px; font-size: 16px; line-height: 1.75; }
+    .contact {
+      display: flex; justify-content: space-between; align-items: center; gap: 24px;
+      border: 2px solid var(--ink); border-radius: 12px; padding: 28px;
+      background: var(--paper);
+    }
+    .contact p { margin: 8px 0 0; line-height: 1.6; font-size: 14px; }
+    footer {
+      border-top: 2px solid var(--ink); padding: 24px 28px; text-align: center;
+      font-size: 11px; font-weight: 800; letter-spacing: .08em;
+    }
+    @media (max-width: 760px) {
+      header { padding: 18px 20px; align-items: flex-start; }
+      nav { gap: 12px; flex-wrap: wrap; justify-content: flex-end; font-size: 11px; }
+      .hero { grid-template-columns: 1fr; padding: 20px 20px 50px; }
+      .hero-art { min-height: 330px; }
+      .section { padding: 42px 20px 55px; }
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; }
+      .artwork { min-height: 220px; }
+      .artwork .emoji { font-size: 76px; }
+      .artwork { min-height: 260px; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+      .about-inner { grid-template-columns: 1fr; padding: 42px 20px; gap: 5px; }
+      .mood-grid { grid-template-columns: 1fr; gap: 14px; }
+      .about-mark { font-size: 80px; }
+      .cards { grid-template-columns: 1fr; }
+      .artwork { min-height: 260px; }
+      .contact { align-items: flex-start; flex-direction: column; padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">Little things, big happy energy ✷ Independent art & objects</div>
+  <header>
+    <a class="wordmark" href="#" aria-label="Level Cherry home">level <span>cherry</span>✳</a>
+    <nav aria-label="Main navigation">
+      <a href="#work">The work</a>
+      <a href="#mood">Our mood</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">A tiny independent art studio</div>
+        <h1>Make life<br>a little <span class="cherry">juicier.</span></h1>
+        <p class="hero-copy">Playful art, happy colors, and everyday objects with a little extra personality. Explore a growing collection of original concepts for prints, posters, and mugs.</p>
+        <a class="pill" href="#work">EXPLORE THE COLLECTION ↓</a>
+      </div>
+      <div class="hero-art" aria-label="Decorative cherry-inspired artwork">
+        <div class="sun"></div>
+        <span class="spark one">✳</span>
+        <span class="spark two">✦</span>
+        <div class="fruit" aria-hidden="true">🍒</div>
+        <div class="scribble">GOOD<br>MOOD CLUB</div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-heading">
+        <h2>A little bit of<br>everything.</h2>
+        <p>Artwork and product concepts currently in development. These are portfolio previews, not a live shop.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="artwork ai"><span class="label">01 / Digital art</span><span class="emoji" aria-hidden="true">🍓</span><span class="number">SWEET STUDY No. 01</span></div>
+          <h3>Sweet Little Worlds</h3><p>Playful digital illustrations inspired by fruit, flowers, and daydreams.</p>
+        </article>
+        <article class="card">
+          <div class="artwork poster"><span class="label">02 / Art print</span><span class="emoji" aria-hidden="true">🍋</span><span class="number">SUNSHINE SERIES</span></div>
+          <h3>Good Things Grow</h3><p>Colorful prints to bring a bright note to your wall or workspace.</p>
+        </article>
+        <article class="card">
+          <div class="artwork mug"><span class="label">03 / Drinkware</span><span class="emoji" aria-hidden="true">☕</span><span class="number">DAILY JOY OBJECTS</span></div>
+          <h3>Sip, Smile, Repeat</h3><p>Mug concepts that make your everyday coffee or tea feel special.</p>
+        </article>
+        <article class="card">
+          <div class="artwork sunny"><span class="label">04 / Wall decor</span><span class="emoji" aria-hidden="true">☀️</span><span class="number">A SUNNY CORNER</span></div>
+          <h3>Sunshine on Paper</h3><p>Sunny wall art for little corners that could use a little joy.</p>
+        </article>
+        <article class="card">
+          <div class="artwork flower"><span class="label">05 / Illustration</span><span class="emoji" aria-hidden="true">🌼</span><span class="number">FLOWER NOTES</span></div>
+          <h3>Petal Parade</h3><p>Loose, happy floral illustrations with a playful hand-drawn feel.</p>
+        </article>
+        <article class="card">
+          <div class="artwork home"><span class="label">06 / Home goods</span><span class="emoji" aria-hidden="true">🕯️</span><span class="number">SLOW LITTLE MOMENTS</span></div>
+          <h3>Slow Sunday</h3><p>Cozy home accents for quiet mornings and slow evenings.</p>
+        </article>
+        <article class="card">
+          <div class="artwork paper"><span class="label">07 / Stationery</span><span class="emoji" aria-hidden="true">📓</span><span class="number">LITTLE PAPER THINGS</span></div>
+          <h3>Notes to Self</h3><p>Notebooks and paper goods for lists, sketches, and passing thoughts.</p>
+        </article>
+        <article class="card">
+          <div class="artwork bloom"><span class="label">08 / Accessories</span><span class="emoji" aria-hidden="true">🍒</span><span class="number">CHERRY ON TOP</span></div>
+          <h3>Cherry on Top</h3><p>Small accessories with cheerful colors and a little extra character.</p>
+        </article>
+        <article class="card">
+          <div class="artwork dream"><span class="label">09 / Digital collection</span><span class="emoji" aria-hidden="true">🌙</span><span class="number">DREAM A LITTLE</span></div>
+          <h3>Soft Daydreams</h3><p>Dreamy digital designs made for screens, prints, and creative spaces.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section mood" id="mood">
+      <div class="section-heading">
+        <h2>Little things.<br>Lovely moods.</h2>
+        <p>A few things that inspire the Level Cherry world: playful color, everyday rituals, and imperfect little details.</p>
+      </div>
+      <div class="mood-grid">
+        <article class="mood-card mood-color"><span class="mood-symbol">✳</span><h3>Color outside the lines</h3><p>Unexpected color combinations and cheerful little surprises.</p></article>
+        <article class="mood-card mood-ritual"><span class="mood-symbol">☕</span><h3>Make the ordinary special</h3><p>A favorite mug, a fresh page, a sunny spot by the window.</p></article>
+        <article class="mood-card mood-play"><span class="mood-symbol">🍒</span><h3>Keep a little playfulness</h3><p>Designs that feel warm, curious, and never too serious.</p></article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-inner">
+        <div class="about-mark" aria-hidden="true">🍒✳</div>
+        <div>
+          <div class="eyebrow">A little about us</div>
+          <h2>Made for your everyday happy.</h2>
+          <p>Level Cherry is an independent creative brand developing playful digital artwork and design concepts for art prints, posters, mugs, and small everyday objects. We believe a little color can change the mood of a whole day.</p>
+          <p>Our collection is growing. This page presents selected concepts and works in progress as we prepare for our first releases.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="contact">
+        <div>
+          <div class="eyebrow">Say hello</div>
+          <h2>Let's make something happy.</h2>
+          <p>For inquiries and collaboration, contact us by email.<br><strong>Email:</strong> <span id="email-placeholder">Add your contact email before publishing.</span></p>
+        </div>
+        <a class="pill" id="email-link" href="mailto:">GET IN TOUCH ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>LEVEL CHERRY © 2026 · ART, PRINTS & OBJECT CONCEPTS</footer>
+</body>
+</html>
